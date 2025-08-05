@@ -1,6 +1,9 @@
+/* TODO: Responsive Design */
+
 :root {
   --headerbg: white;
-  --purple: #3e0b5f;
+  --lilac: #fdd7fb;
+  --purple: #4b2c5e;
   --presentSize: 500px;
   --fontSize: 80px;
   --shadowSize: 60px;
@@ -18,7 +21,7 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: linear-gradient(var(--purple), #CCA2FF);
+    background: linear-gradient(var(--purple), var(--lilac));
     z-index: 1;
 }
 
@@ -97,13 +100,14 @@ header p{
 
 ul {
     margin-top: var(--shadowSize);
-    display: flex;
+    display: grid;
     list-style: none;
     padding: 0;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 40px;
+    grid-template-columns: repeat(3, minmax(var(--presentSize), calc(var(--presentSize) * 2)));
+    align-self: center;
+    justify-items: center;
+    gap: 10px;
+    row-gap: 50px;
 }
 
 .present{
@@ -118,7 +122,7 @@ ul {
     margin: 15px;
     padding: 0;
     font-size: 1em;
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.85);
+    box-shadow: 0 0 calc(var(--presentSize) * 0.1) rgba(255, 215, 0, 0.85);
 }
 
 .title{
