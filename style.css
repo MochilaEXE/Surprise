@@ -2,13 +2,15 @@
   --headerbg: white;
   --lilac: #fdd7fb;
   --purple: #4b2c5e;
-  --presentSize: 500px;
-  --fontSize: 5rem;
-  --shadowSize: 50px;
-  --logoWidth: 200px;
+  --presentSize: min(500px, 45vh);
+  --presentSize: min(500px, 45dvh);
+  --fontSize: 4rem;
+  --shadowSize: 30px;
+  --logoWidth: 150px;
   --logoAproxim: 0.08;
   --circle1: #D09CF4;
   --circle2: #CDDD74;
+  --gap: 7vw;
 }
 
 * {
@@ -74,7 +76,7 @@ header {
     color: var(--purple);
     text-align: center;
     align-content: center;
-    min-height: 100px;
+    min-height: 70px;
     padding: 0;
 }
 
@@ -91,7 +93,7 @@ header::after {
 }
 
 header p{
-    margin: clamp(20px, 3vw, 100px) calc(var(--logoWidth) + 10px);
+    margin: clamp(10px, 3vw, 100px) calc(var(--logoWidth) + 10px);
     font-size: var(--fontSize);
     line-height: 1.2;
     animation: Descend 1.5s ease-in;
@@ -102,29 +104,25 @@ ul {
     display: grid;
     list-style: none;
     padding: 0;
-    grid-template-columns: repeat(3, minmax(var(--presentSize), calc(var(--presentSize) * 2)));
+    grid-template-columns: repeat(3, var(--presentSize));
     align-self: center;
     justify-items: center;
-    gap: 10px;
-    row-gap: 60px;
+    gap: var(--gap);
+    row-gap: min(5vw,60px);
 }
 
 .present{
     position: relative;
     flex-shrink: 0;
     text-align: center;
-    height: min(var(--presentSize), 45vh);
-    width: min(var(--presentSize), 45vh);
-    /* compactability reasons */
-    height: min(var(--presentSize), 45dvh);
-    width: min(var(--presentSize), 45dvh);
+    height: var(--presentSize);
+    width: var(--presentSize);
     background-color: #f9ffa5;
     border-radius: 6.25%;
     margin: 15px;
     padding: 0;
     font-size: 1em;
-    box-shadow: 0 0 calc(min(var(--presentSize), 45vh) * 0.1) 20px rgba(255, 215, 0, 0.85);
-    box-shadow: 0 0 calc(min(var(--presentSize), 45dvh) * 0.1) 20px rgba(255, 215, 0, 0.85);
+    box-shadow: 0 0 calc(var(--presentSize) * 0.1) 15px rgba(255, 215, 0, 0.85);
     overflow: hidden;
     user-select: none;
 }
@@ -158,8 +156,7 @@ ul {
 .present .description{
     margin: 0;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2));
-    font-size: calc(min(var(--presentSize), 45vh) * 0.05);
-    font-size: calc(min(var(--presentSize), 45dvh) * 0.05);
+    font-size: calc(var(--presentSize)  * 0.05);
     text-align: start;
     border-radius: 6.25% 6.25% 0 0;
     height: 100%;
@@ -186,9 +183,10 @@ footer{
     right: 0;
     margin-top: auto;
     padding-right: 20px;
+    padding-bottom: max(5px, 1vw);
     text-align: right;
     color: black;
-    font-size: 1.5rem;
+    font-size: calc(var(--fontSize) * 0.3);
     background: var(--headerbg);
 }
 
@@ -204,88 +202,104 @@ footer{
 
 /* Responsive design */
 
-/* grid */
-@media (max-width: 1900px) and (min-width: 1501px) {
+/* 4K */
+@media (min-width: 1901px) {
     :root {
-        --presentSize: 400px;
+        --presentSize: clamp(400px, 45vh, 500px);
+        --presentSize: clamp(400px, 45dvh, 500px);
+        --fontSize: 5.2rem;
+        --logoWidth: 225px;
+        --shadowSize: 80px;
+    }
+}
+
+/* Laptops and PCs */
+@media (max-width: 1900px) and (min-width: 1101px) {
+    :root {
+        --presentSize: clamp(200px, 45vh, 300px);
+        --presentSize: clamp(200px, 45dvh, 300px);
+    }
+    .present{
+        box-shadow: 0 0 calc(var(--presentSize) * 0.1) 10px rgba(255, 215, 0, 0.85);
     }
 }
 
 /* Tablet */
-@media (min-width: 1101px) and (max-width: 1500px) {
+@media (max-width: 1100px) and (min-width: 901px) {
     ul {
-        grid-template-columns: repeat(2, minmax(var(--presentSize), calc(var(--presentSize) * 2)));
+        grid-template-columns: repeat(3, var(--presentSize));
     }
     :root {
         --fontSize: 3.5rem;
-        --presentSize: 400px;   
-        --logoWidth: 175px;
-    }
-    .present {
-        height: min(var(--presentSize), 35vw);
-        width: min(var(--presentSize), 35vw);
-        box-shadow: 0 0 calc(min(var(--presentSize), 35vw) * 0.1) 20px rgba(255, 215, 0, 0.85);
-    }
-    .present .description{
-        font-size: calc(min(var(--presentSize), 35vw) * 0.05);
-    }
-}
-
-/* Mobile */
-@media (max-width: 1100px) and (min-width: 901px) {
-    ul {
-        grid-template-columns: repeat(1, minmax(var(--presentSize), 60vw));
-    }
-    :root {
+        --presentSize: min(300px, 25vw);   
         --logoWidth: 150px;
-        --fontSize: 4rem;
-        --presentSize: 250px;
     }
     .present {
-        height: max(var(--presentSize), 60vw);
-        width: max(var(--presentSize), 60vw);
-        box-shadow: 0 0 calc(max(var(--presentSize), 60vw) * 0.1) 20px rgba(255, 215, 0, 0.85);
+        height: var(--presentSize);
+        width: var(--presentSize);
+        box-shadow: 0 0 calc(var(--presentSize) * 0.1) 7px rgba(255, 215, 0, 0.85);
     }
     .present .description{
-        font-size: calc(max(var(--presentSize), 60vw) * 0.05);
+        font-size: calc(var(--presentSize) * 0.05);
     }
 }
 
-/* Mobile XS */
-@media (max-width: 900px) and (min-width: 571px) {
+/* Tablet */
+@media (max-width: 900px) and (min-width: 501px) {
     ul {
-        grid-template-columns: repeat(1, minmax(var(--presentSize), 60vw));
+        grid-template-columns: repeat(2, minmax(var(--presentSize), 60vw));
     }
     :root {
         --logoWidth: 100px;
-        --fontSize: 3rem;
-        --presentSize: 200px;
+        --fontSize: 7vw;
+        --presentSize: max(200px, 35vw);
+        --gap: 0;
     }
     .present {
-        height: max(var(--presentSize), 60vw);
-        width: max(var(--presentSize), 60vw);
-        box-shadow: 0 0 calc(max(var(--presentSize), 60vw) * 0.1) 20px rgba(255, 215, 0, 0.85);
+        height: var(--presentSize);
+        width: var(--presentSize);
+        box-shadow: 0 0 calc(var(--presentSize) * 0.1) 10px rgba(255, 215, 0, 0.85);
     }
     .present .description{
-        font-size: calc(max(var(--presentSize), 60vw) * 0.05);
+        font-size: calc(var(--presentSize) * 0.05);
     }
 }
-/* Mobile XXS */
-@media (max-width: 570px) {
+
+/* Mobile S */
+@media (max-width: 500px) and (min-width: 401px) {
     ul {
         grid-template-columns: repeat(1, minmax(var(--presentSize), 60vw));
     }
     :root {
-        --logoWidth: 50px;
-        --fontSize: 1.5rem;
-        --presentSize: 200px;
+        --logoWidth: 75px;
+        --fontSize: 2.2rem;
+        --presentSize: max(200px, 70vw);
     }
     .present {
-        height: max(var(--presentSize), 60vw);
-        width: max(var(--presentSize), 60vw);
-        box-shadow: 0 0 calc(max(var(--presentSize), 60vw) * 0.1) 10px rgba(255, 215, 0, 0.85);
+        height: var(--presentSize);
+        width: var(--presentSize);
+        box-shadow: 0 0 calc(var(--presentSize) * 0.1) 7px rgba(255, 215, 0, 0.85);
     }
     .present .description{
-        font-size: calc(max(var(--presentSize), 60vw) * 0.05);
+        font-size: calc(var(--presentSize) * 0.05);
+    }
+}
+/* Mobile XS */
+@media (max-width: 400px) {
+    ul {
+        grid-template-columns: repeat(1, minmax(var(--presentSize), 60vw));
+    }
+    :root {
+        --logoWidth: 60px;
+        --fontSize: 7vw;
+        --presentSize: max(200px, 60vw);
+    }
+    .present {
+        height: var(--presentSize);
+        width: var(--presentSize);
+        box-shadow: 0 0 calc(var(--presentSize) * 0.1) 5px rgba(255, 215, 0, 0.85);
+    }
+    .present .description{
+        font-size: calc(var(--presentSize) * 0.05);
     }
 }
