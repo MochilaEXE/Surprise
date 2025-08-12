@@ -1,15 +1,10 @@
-/* TODO: Responsive Design */
-/* TODO: Responsive Design */
-/* TODO: Responsive Design */
-/* TODO: Responsive Design */
-
 :root {
   --headerbg: white;
   --lilac: #fdd7fb;
   --purple: #4b2c5e;
   --presentSize: 500px;
-  --fontSize: 80px;
-  --shadowSize: 60px;
+  --fontSize: 5rem;
+  --shadowSize: 50px;
   --logoWidth: 200px;
   --logoAproxim: 0.08;
   --circle1: #D09CF4;
@@ -30,20 +25,15 @@ body {
     padding: 0;
     background: linear-gradient(var(--lilac), var(--purple));
     z-index: 1;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 logo{
     margin: 0 10px;
     display: flex;
     position: absolute;
-    width: var(--logoWidth);
-    height: 100%;
-}
-
-logo{
-    margin: 0 10px;
-    display: flex;
-    position: absolute;
+    top: 0;
     width: var(--logoWidth);
     height: 100%;
 }
@@ -101,14 +91,14 @@ header::after {
 }
 
 header p{
-    margin: 40px;
+    margin: clamp(20px, 3vw, 100px) calc(var(--logoWidth) + 10px);
     font-size: var(--fontSize);
     line-height: 1.2;
-    animation: Descend 1s cubic-bezier(0,0.4,0,1);
+    animation: Descend 1.5s ease-in;
 }
 
 ul {
-    margin-top: var(--shadowSize);
+    margin-top: calc(var(--shadowSize)*1.2);
     display: grid;
     list-style: none;
     padding: 0;
@@ -123,21 +113,26 @@ ul {
     position: relative;
     flex-shrink: 0;
     text-align: center;
-    height: var(--presentSize);
-    width: var(--presentSize);
+    height: min(var(--presentSize), 45vh);
+    width: min(var(--presentSize), 45vh);
+    /* compactability reasons */
+    height: min(var(--presentSize), 45dvh);
+    width: min(var(--presentSize), 45dvh);
     background-color: #f9ffa5;
-    border-radius: 25px;
+    border-radius: 6.25%;
     margin: 15px;
     padding: 0;
     font-size: 1em;
-    box-shadow: 0 0  calc(var(--presentSize) * 0.1) 20px rgba(255, 215, 0, 0.85);
+    box-shadow: 0 0 calc(min(var(--presentSize), 45vh) * 0.1) 20px rgba(255, 215, 0, 0.85);
+    box-shadow: 0 0 calc(min(var(--presentSize), 45dvh) * 0.1) 20px rgba(255, 215, 0, 0.85);
     overflow: hidden;
+    user-select: none;
 }
 
 .present img{
-    border-radius: 25px;
-    width: var(--presentSize);
-    height: var(--presentSize);
+    border-radius: 6.25%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.5s cubic-bezier(.6,-0.65,.12,.9);
 }
@@ -151,9 +146,9 @@ ul {
     color: var(--headerbg);
     font-size: calc(var(--fontSize) * 0.5);
     margin: 0;
-    min-width: var(--presentSize);
+    min-width: 100%;
     background-color: #000000a8;
-    border-radius: 0 0 25px 25px;
+    border-radius: 0 0 6.25% 6.25%;
     padding: 10px 0 10px 0;
     z-index: 2;
     position: absolute;
@@ -163,20 +158,20 @@ ul {
 .present .description{
     margin: 0;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2));
-    font-size: calc(var(--fontSize) * 0.3);
+    font-size: calc(min(var(--presentSize), 45vh) * 0.05);
+    font-size: calc(min(var(--presentSize), 45dvh) * 0.05);
     text-align: start;
-    border-radius: 25px 25px 0 0;
+    border-radius: 6.25% 6.25% 0 0;
     height: 100%;
+    width: 100%;
     color: white;
-    padding: 15px 25px 15px 25px;
-    max-width: var(--presentSize);
+    padding: 5% 6% 5% 6%;
     transition: opacity 0.7s ease-in-out;
     opacity: 0;
     z-index: 2;
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
 }
 
 .present:hover .description{
@@ -190,17 +185,107 @@ footer{
     left: 0;
     right: 0;
     margin-top: auto;
-    margin-right: 20px;
+    padding-right: 20px;
     text-align: right;
     color: black;
+    font-size: 1.5rem;
+    background: var(--headerbg);
 }
 
 /* Animations */
 @keyframes Descend {
     0% {
-        transform: translateY(-150%);
+        transform: translateY(-200%);
     }
     100% {
         transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+
+/* grid */
+@media (max-width: 1900px) and (min-width: 1501px) {
+    :root {
+        --presentSize: 400px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 1101px) and (max-width: 1500px) {
+    ul {
+        grid-template-columns: repeat(2, minmax(var(--presentSize), calc(var(--presentSize) * 2)));
+    }
+    :root {
+        --fontSize: 3.5rem;
+        --presentSize: 400px;   
+        --logoWidth: 175px;
+    }
+    .present {
+        height: min(var(--presentSize), 35vw);
+        width: min(var(--presentSize), 35vw);
+        box-shadow: 0 0 calc(min(var(--presentSize), 35vw) * 0.1) 20px rgba(255, 215, 0, 0.85);
+    }
+    .present .description{
+        font-size: calc(min(var(--presentSize), 35vw) * 0.05);
+    }
+}
+
+/* Mobile */
+@media (max-width: 1100px) and (min-width: 901px) {
+    ul {
+        grid-template-columns: repeat(1, minmax(var(--presentSize), 60vw));
+    }
+    :root {
+        --logoWidth: 150px;
+        --fontSize: 4rem;
+        --presentSize: 250px;
+    }
+    .present {
+        height: max(var(--presentSize), 60vw);
+        width: max(var(--presentSize), 60vw);
+        box-shadow: 0 0 calc(max(var(--presentSize), 60vw) * 0.1) 20px rgba(255, 215, 0, 0.85);
+    }
+    .present .description{
+        font-size: calc(max(var(--presentSize), 60vw) * 0.05);
+    }
+}
+
+/* Mobile XS */
+@media (max-width: 900px) and (min-width: 571px) {
+    ul {
+        grid-template-columns: repeat(1, minmax(var(--presentSize), 60vw));
+    }
+    :root {
+        --logoWidth: 100px;
+        --fontSize: 3rem;
+        --presentSize: 200px;
+    }
+    .present {
+        height: max(var(--presentSize), 60vw);
+        width: max(var(--presentSize), 60vw);
+        box-shadow: 0 0 calc(max(var(--presentSize), 60vw) * 0.1) 20px rgba(255, 215, 0, 0.85);
+    }
+    .present .description{
+        font-size: calc(max(var(--presentSize), 60vw) * 0.05);
+    }
+}
+/* Mobile XXS */
+@media (max-width: 570px) {
+    ul {
+        grid-template-columns: repeat(1, minmax(var(--presentSize), 60vw));
+    }
+    :root {
+        --logoWidth: 50px;
+        --fontSize: 1.5rem;
+        --presentSize: 200px;
+    }
+    .present {
+        height: max(var(--presentSize), 60vw);
+        width: max(var(--presentSize), 60vw);
+        box-shadow: 0 0 calc(max(var(--presentSize), 60vw) * 0.1) 10px rgba(255, 215, 0, 0.85);
+    }
+    .present .description{
+        font-size: calc(max(var(--presentSize), 60vw) * 0.05);
     }
 }
