@@ -31,6 +31,14 @@ body {
     overflow-y: scroll;
 }
 
+.heart{
+    width: 10vw;
+    height: auto;
+    position: absolute;
+    animation: fall 5s linear infinite;
+    z-index: -2;
+}
+
 logo{
     margin: 0 10px;
     display: flex;
@@ -125,6 +133,10 @@ ul {
     box-shadow: 0 0 calc(var(--presentSize) * 0.1) 15px rgba(255, 215, 0, 0.85);
     overflow: hidden;
     user-select: none;
+    transform: translateY(50%);
+    opacity: 0;
+    transition: box-shadow 0.3s ease-in-out;
+    animation: appear 0.5s ease-out forwards;
 }
 
 .present img{
@@ -188,6 +200,7 @@ footer{
     color: black;
     font-size: calc(var(--fontSize) * 0.3);
     background: var(--headerbg);
+    min-height: 250px;
 }
 
 /* Animations */
@@ -197,6 +210,26 @@ footer{
     }
     100% {
         transform: translateY(0);
+    }
+}
+
+@keyframes appear {
+    0% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(var(--pageHeight)) rotate(720deg);
     }
 }
 
@@ -216,8 +249,8 @@ footer{
 /* Laptops and PCs */
 @media (max-width: 1900px) and (min-width: 1101px) {
     :root {
-        --presentSize: clamp(200px, 45vh, 300px);
-        --presentSize: clamp(200px, 45dvh, 300px);
+        --presentSize: clamp(200px, 45vh, 400px);
+        --presentSize: clamp(200px, 45dvh, 400px);
     }
     .present{
         box-shadow: 0 0 calc(var(--presentSize) * 0.1) 10px rgba(255, 215, 0, 0.85);
