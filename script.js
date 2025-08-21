@@ -35,4 +35,6 @@ function createHeart() {
 // cria 1 coração a cada 500ms
 setInterval(createHeart, 500);
 
-setInterval(recalculatePageHeight, 2000);
+recalculatePageHeight();
+window.addEventListener('resize', recalculatePageHeight);
+window.addEventListener('load', recalculatePageHeight);
