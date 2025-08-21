@@ -1,22 +1,38 @@
-const pageHeight = document.body.scrollHeight;
-document.documentElement.style.setProperty('--pageHeight', pageHeight-250 + 'px');
+function recalculatePageHeight() {
+  // set page height
+  const pageHeight = document.body.scrollHeight;
+  document.documentElement.style.setProperty('--pageHeight', pageHeight-250 + 'px');
+}
 
+// present appear
 document.querySelectorAll('.present').forEach((div, i) => {
   div.style.animationDelay = `${i * 0.1}s`;
 });
 
-document.querySelectorAll('.heart').forEach((heart) => {
-  const randomLeft = Math.random() * 88;
+// create infinite heart elements
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = '<img src="images/image.png">';
 
-  const randomDelay = Math.random() * 10; 
+  const size = Math.random() * 10 + 2; // random size
+  const left = Math.random() * 90; // random position
+  const duration = 3 + Math.random() * 7; // random speed
 
-  const randomDuration = 5 + Math.random() * 5;
+  heart.style.left = `${left}vw`;
+  heart.style.maxWidth = `${size}vw`;
+  heart.style.maxHeight = `${size}vw`;
+  heart.style.animationDuration = `${duration}s`;
 
-  const randomScale = 3 + Math.random() * 12;
+  document.body.appendChild(heart);
 
-  heart.style.left = `${randomLeft}vw`;
-  heart.style.animationDelay = `${randomDelay}s`;
-  heart.style.animationDuration = `${randomDuration}s`;
-  heart.style.width = `${randomScale}vw`;
-});
+  // remove from DOM when finished
+  setTimeout(() => {
+    heart.remove();
+  }, duration * 1000);
+}
 
+// cria 1 coração a cada 500ms
+setInterval(createHeart, 500);
+
+setInterval(recalculatePageHeight, 2000);
