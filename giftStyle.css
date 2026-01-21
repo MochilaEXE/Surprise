@@ -1,0 +1,243 @@
+:root {
+  --headerbg: white;
+  --lilac: #fdd7fb;
+  --purple: #4b2c5e;
+  --fontSize: 4rem;
+  --shadowSize: 30px;
+  --logoWidth: 150px;
+  --logoAproxim: 0.08;
+  --circle1: #D09CF4;
+  --circle2: #CDDD74;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    font-family: Inter, Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(var(--lilac), var(--purple));
+    z-index: 1;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    cursor: url('../images/cursor.png'), auto;
+}
+
+logo {
+    margin: 0 10px;
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: var(--logoWidth);
+    height: 100%;
+    cursor: url('../images/pointer.png'), auto;
+}
+
+logo::after, logo::before{
+    content: "";
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    width: calc(var(--logoWidth) * 0.5);
+    height: calc(var(--logoWidth) * 0.5);
+    border-radius: 50%;
+}
+
+logo::after{
+    right: calc(var(--logoWidth) * var(--logoAproxim));
+    background-color: var(--circle1);
+    box-shadow: 0 0 0 calc(var(--logoWidth) * 0.03) var(--circle2),
+    0 0 0 calc(var(--logoWidth) * 0.06) var(--headerbg);
+
+}
+
+logo::before{
+    left: calc(var(--logoWidth) * var(--logoAproxim));
+    background-color: var(--circle2);
+    box-shadow: 0 0 0 calc(var(--logoWidth) * 0.03) var(--circle1);
+}
+
+header {
+    z-index: 100;
+    position: sticky;
+    top: 0;
+    background: var(--headerbg);
+    color: var(--purple);
+    text-align: center;
+    align-content: center;
+    min-height: 50px;
+    padding: 0;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    bottom: calc(var(--shadowSize)* -1);
+    left: 0;
+    width: 100%;
+    height: var(--shadowSize);
+    background: linear-gradient(to bottom, rgba(50, 50, 50, 0.8), transparent);
+    pointer-events: none;
+    z-index: -1;
+}
+
+header p{
+    width: 100%;
+    font-size: var(--fontSize);
+    line-height: 1;
+    animation: Descend 1.5s ease-in;
+}
+
+.imageCollection {
+    width: 40%;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(10px, 2vw, 30px);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    animation: appear 1.5s ease-out;
+    scrollbar-width: thin;
+}
+
+.imageCollection img {
+    width: auto;
+    height: max(25vw, 200px);
+}
+
+.wrapper {
+    margin: calc(var(--shadowSize)*2) 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1%;
+    padding: 0 10px;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.wrapper .text{
+    background-image: linear-gradient(to top, #feffbabb, #00000000 15px);
+    border-radius: clamp(10px, 5vw, 40px);
+    padding: 20px 50px;
+    max-width: 1000px;
+    overflow: hidden;
+}
+
+.text p{
+    transform: translateY(200%);
+    font-size: clamp(16px, 2vw, 24px);
+    color: #ffffff;
+    text-shadow: 3px 3px 5px rgba(100, 100, 0, 0.9);
+    animation: ascend 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+/* Animations */
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateX(-200%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes Descend {
+    0% {
+        transform: translateY(-200%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes ascend {
+    0% {
+        transform: translateY(200%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+
+/* 4K */
+@media (min-width: 1901px) {
+    :root {
+        --presentSize: clamp(400px, 45vh, 500px);
+        --presentSize: clamp(400px, 45dvh, 500px);
+        --fontSize: 5.2rem;
+        --logoWidth: 225px;
+        --shadowSize: 80px;
+    }
+}
+
+/* Laptops and PCs */
+@media (max-width: 1900px) and (min-width: 1101px) {
+    :root {
+        --presentSize: clamp(200px, 45vh, 400px);
+        --presentSize: clamp(200px, 45dvh, 400px);
+    }
+}
+
+/* Tablet */
+@media (max-width: 1100px) and (min-width: 901px) {
+    :root {
+        --fontSize: 3.5rem;
+        --presentSize: min(300px, 25vw);   
+        --logoWidth: 150px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 900px) and (min-width: 501px) {
+    :root {
+        --logoWidth: 100px;
+        --fontSize: 7vw;
+        --presentSize: max(200px, 35vw);
+        --gap: 0;
+    }
+}
+
+/* Mobile S */
+@media (max-width: 500px) and (min-width: 401px) {
+    :root {
+        --logoWidth: 75px;
+        --fontSize: 2.2rem;
+        --presentSize: max(200px, 70vw);
+    }
+}
+/* Mobile XS */
+@media (max-width: 400px) {
+    :root {
+        --logoWidth: 60px;
+        --fontSize: 7vw;
+        --presentSize: max(200px, 60vw);
+    }
+}
+
+/* paragraph position */
+@media (max-width: 800px) {
+    .wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .imageCollection{
+        width: 90%;
+    }
+}
