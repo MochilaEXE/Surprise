@@ -27,15 +27,17 @@ body {
     z-index: 1;
     overflow-x: hidden;
     overflow-y: scroll;
+    cursor: url('../images/cursor.png'), auto;
 }
 
 logo {
-  margin: 0 10px;
+    margin: 0 10px;
     display: flex;
     position: absolute;
     top: 0;
     width: var(--logoWidth);
     height: 100%;
+    cursor: url('../images/pointer.png'), auto;
 }
 
 logo::after, logo::before{
@@ -60,10 +62,6 @@ logo::before{
     left: calc(var(--logoWidth) * var(--logoAproxim));
     background-color: var(--circle2);
     box-shadow: 0 0 0 calc(var(--logoWidth) * 0.03) var(--circle1);
-}
-
-logo:hover::after, logo:hover::before{
-    cursor: pointer;
 }
 
 header {
@@ -94,22 +92,86 @@ header p{
     width: 100%;
     font-size: var(--fontSize);
     line-height: 1;
+    animation: Descend 1.5s ease-in;
 }
 
-img {
-    width: min(90vh, 90vw);
-    height: auto;
-    margin: var(--shadowSize) auto;
-    display: block;
+.imageCollection {
+    width: 40%;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(10px, 2vw, 30px);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    animation: appear 1.5s ease-out;
+    scrollbar-width: thin;
 }
 
-.wrapper p{
-    background-color: var(--headerbg);
+.imageCollection img {
+    width: auto;
+    height: max(25vw, 200px);
+}
+
+.wrapper {
+    margin: calc(var(--shadowSize)*2) 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1%;
+    padding: 0 10px;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.wrapper .text{
+    background-image: linear-gradient(to top, #feffbabb, #00000000 15px);
     border-radius: clamp(10px, 5vw, 40px);
-    margin: 5% auto;
-    padding: 10px 50px;
+    padding: 20px 50px;
     max-width: 1000px;
+    overflow: hidden;
+}
+
+.text p{
+    transform: translateY(200%);
     font-size: clamp(16px, 2vw, 24px);
+    color: #ffffff;
+    text-shadow: 3px 3px 5px rgba(100, 100, 0, 0.9);
+    animation: ascend 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+}
+
+/* Animations */
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateX(-200%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes Descend {
+    0% {
+        transform: translateY(-200%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes ascend {
+    0% {
+        transform: translateY(200%);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 /* Responsive design */
@@ -166,5 +228,16 @@ img {
         --logoWidth: 60px;
         --fontSize: 7vw;
         --presentSize: max(200px, 60vw);
+    }
+}
+
+/* paragraph position */
+@media (max-width: 800px) {
+    .wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .imageCollection{
+        width: 90%;
     }
 }
