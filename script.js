@@ -13,7 +13,7 @@ document.querySelectorAll('.present').forEach((div, i) => {
 function createHeart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
-  heart.innerHTML = '<img src="images/image.png">';
+  heart.innerHTML = '<img src="images/heart.png">';
 
   const size = Math.random() * 10 + 2; // random size
   const left = Math.random() * 90; // random position

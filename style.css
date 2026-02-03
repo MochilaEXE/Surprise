@@ -138,7 +138,7 @@ ul {
     margin: 15px;
     padding: 0;
     font-size: 1em;
-    box-shadow: 0 0 calc(var(--presentSize) * 0.1) 15px rgba(255, 215, 0, 0.85);
+    box-shadow: 0 0 calc(var(--presentSize) * 0.1) clamp(5px, 0.2vw, 15px) rgba(255, 215, 0, 0.85);
     overflow: hidden;
     user-select: none;
     transform: translateY(50%);
@@ -257,8 +257,7 @@ footer{
 /* Laptops and PCs */
 @media (max-width: 1900px) and (min-width: 1101px) {
     :root {
-        --presentSize: clamp(200px, 45vh, 400px);
-        --presentSize: clamp(200px, 45dvh, 400px);
+        --presentSize: clamp(200px, 40vh, 300px);
     }
     .present{
         box-shadow: 0 0 calc(var(--presentSize) * 0.1) 10px rgba(255, 215, 0, 0.85);
