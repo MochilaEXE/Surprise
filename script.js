@@ -1,13 +1,20 @@
 function recalculatePageHeight() {
   // set page height
   const pageHeight = document.body.scrollHeight;
-  document.documentElement.style.setProperty('--pageHeight', pageHeight-250 + 'px');
+  document.documentElement.style.setProperty('--pageHeight', pageHeight - 250 + 'px');
+}
+
+function playMusic() {
+  const iframe = document.getElementById("player");
+  iframe.src = "https://www.youtube.com/embed/MqazV4hbu8E?autoplay=1&loop=1&playlist=MqazV4hbu8E";
+  document.getElementsByClassName("titulo")[0].removeEventListener("click", playMusic);
 }
 
 // present appear
 document.querySelectorAll('.present').forEach((div, i) => {
   div.style.animationDelay = `${i * 0.1}s`;
 });
+document.getElementsByClassName("titulo")[0].addEventListener("click", playMusic);
 
 // create infinite heart elements
 function createHeart() {

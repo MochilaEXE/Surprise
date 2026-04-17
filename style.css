@@ -1,20 +1,20 @@
 :root {
-  --headerbg: white;
-  --lilac: #fdd7fb;
-  --purple: #4b2c5e;
-  --presentSize: min(500px, 45vh);
-  --presentSize: min(500px, 45dvh);
-  --fontSize: 4rem;
-  --shadowSize: 30px;
-  --logoWidth: 150px;
-  --logoAproxim: 0.08;
-  --circle1: #D09CF4;
-  --circle2: #CDDD74;
-  --gap: 7vw;
+    --headerbg: white;
+    --lilac: #fdd7fb;
+    --purple: #4b2c5e;
+    --presentSize: min(500px, 45vh);
+    --presentSize: min(500px, 45dvh);
+    --fontSize: 4rem;
+    --shadowSize: 30px;
+    --logoWidth: 150px;
+    --logoAproxim: 0.08;
+    --circle1: #D09CF4;
+    --circle2: #CDDD74;
+    --gap: 7vw;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
@@ -33,22 +33,22 @@ body {
 }
 
 .heart {
-  position: absolute;
-  animation: fall linear forwards;
-  z-index: -2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    animation: fall linear forwards;
+    z-index: -2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .heart img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 logo {
-  margin: 0 10px;
+    margin: 0 10px;
     display: flex;
     position: absolute;
     top: 0;
@@ -56,7 +56,8 @@ logo {
     height: 100%;
 }
 
-logo::after, logo::before{
+logo::after,
+logo::before {
     content: "";
     position: absolute;
     align-self: center;
@@ -66,21 +67,22 @@ logo::after, logo::before{
     border-radius: 50%;
 }
 
-logo::after{
+logo::after {
     right: calc(var(--logoWidth) * var(--logoAproxim));
     background-color: var(--circle1);
     box-shadow: 0 0 0 calc(var(--logoWidth) * 0.03) var(--circle2),
-    0 0 0 calc(var(--logoWidth) * 0.06) var(--headerbg);
+        0 0 0 calc(var(--logoWidth) * 0.06) var(--headerbg);
 
 }
 
-logo::before{
+logo::before {
     left: calc(var(--logoWidth) * var(--logoAproxim));
     background-color: var(--circle2);
     box-shadow: 0 0 0 calc(var(--logoWidth) * 0.03) var(--circle1);
 }
 
-logo:hover::after, logo:hover::before{
+logo:hover::after,
+logo:hover::before {
     cursor: pointer;
 }
 
@@ -108,12 +110,14 @@ header::after {
     z-index: -1;
 }
 
-header p{
+header p {
     margin: clamp(10px, 3vw, 100px) calc(var(--logoWidth) + 10px);
     font-size: var(--fontSize);
     line-height: 1.2;
     animation: Descend 1.5s ease-in;
+    cursor: pointer;
 }
+
 
 ul {
     margin-top: calc(var(--shadowSize)*1.2);
@@ -124,10 +128,10 @@ ul {
     align-self: center;
     justify-items: center;
     gap: var(--gap);
-    row-gap: min(5vw,60px);
+    row-gap: min(5vw, 60px);
 }
 
-.present{
+.present {
     position: relative;
     flex-shrink: 0;
     text-align: center;
@@ -147,19 +151,19 @@ ul {
     animation: appear 0.5s ease-out forwards;
 }
 
-.present img{
+.present img {
     border-radius: 6.25%;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s cubic-bezier(.6,-0.65,.12,.9);
+    transition: transform 0.5s cubic-bezier(.6, -0.65, .12, .9);
 }
 
-.present:hover img{
+.present:hover img {
     transform: scale(1.5);
 }
 
-.title{
+.title {
     align-self: flex-end;
     color: var(--headerbg);
     font-size: calc(var(--fontSize) * 0.5);
@@ -173,10 +177,10 @@ ul {
     bottom: 0;
 }
 
-.present .description{
+.present .description {
     margin: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2));
-    font-size: calc(var(--presentSize)  * 0.05);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+    font-size: calc(var(--presentSize) * 0.05);
     text-align: start;
     border-radius: 6.25% 6.25% 0 0;
     height: 100%;
@@ -191,11 +195,11 @@ ul {
     left: 0;
 }
 
-.present:hover .description{
+.present:hover .description {
     opacity: 1;
 }
 
-footer{
+footer {
     display: block;
     position: static;
     bottom: 0;
@@ -216,6 +220,7 @@ footer{
     0% {
         transform: translateY(-200%);
     }
+
     100% {
         transform: translateY(0);
     }
@@ -226,6 +231,7 @@ footer{
         transform: translateY(50%);
         opacity: 0;
     }
+
     100% {
         transform: translateY(0);
         opacity: 1;
@@ -236,6 +242,7 @@ footer{
     0% {
         transform: translateY(0) rotate(0deg);
     }
+
     100% {
         transform: translateY(var(--pageHeight)) rotate(720deg);
     }
@@ -259,7 +266,8 @@ footer{
     :root {
         --presentSize: clamp(200px, 40vh, 300px);
     }
-    .present{
+
+    .present {
         box-shadow: 0 0 calc(var(--presentSize) * 0.1) 10px rgba(255, 215, 0, 0.85);
     }
 }
@@ -269,17 +277,20 @@ footer{
     ul {
         grid-template-columns: repeat(3, var(--presentSize));
     }
+
     :root {
         --fontSize: 3.5rem;
-        --presentSize: min(300px, 25vw);   
+        --presentSize: min(300px, 25vw);
         --logoWidth: 150px;
     }
+
     .present {
         height: var(--presentSize);
         width: var(--presentSize);
         box-shadow: 0 0 calc(var(--presentSize) * 0.1) 7px rgba(255, 215, 0, 0.85);
     }
-    .present .description{
+
+    .present .description {
         font-size: calc(var(--presentSize) * 0.05);
     }
 }
@@ -289,18 +300,21 @@ footer{
     ul {
         grid-template-columns: repeat(2, minmax(var(--presentSize), 60vw));
     }
+
     :root {
         --logoWidth: 100px;
         --fontSize: 7vw;
         --presentSize: max(200px, 35vw);
         --gap: 0;
     }
+
     .present {
         height: var(--presentSize);
         width: var(--presentSize);
         box-shadow: 0 0 calc(var(--presentSize) * 0.1) 10px rgba(255, 215, 0, 0.85);
     }
-    .present .description{
+
+    .present .description {
         font-size: calc(var(--presentSize) * 0.05);
     }
 }
@@ -310,36 +324,43 @@ footer{
     ul {
         grid-template-columns: repeat(1, minmax(var(--presentSize), 60vw));
     }
+
     :root {
         --logoWidth: 75px;
         --fontSize: 2.2rem;
         --presentSize: max(200px, 70vw);
     }
+
     .present {
         height: var(--presentSize);
         width: var(--presentSize);
         box-shadow: 0 0 calc(var(--presentSize) * 0.1) 7px rgba(255, 215, 0, 0.85);
     }
-    .present .description{
+
+    .present .description {
         font-size: calc(var(--presentSize) * 0.05);
     }
 }
+
 /* Mobile XS */
 @media (max-width: 400px) {
     ul {
         grid-template-columns: repeat(1, minmax(var(--presentSize), 60vw));
     }
+
     :root {
         --logoWidth: 60px;
         --fontSize: 7vw;
         --presentSize: max(200px, 60vw);
     }
+
     .present {
         height: var(--presentSize);
         width: var(--presentSize);
         box-shadow: 0 0 calc(var(--presentSize) * 0.1) 5px rgba(255, 215, 0, 0.85);
     }
-    .present .description{
+
+    .present .description {
         font-size: calc(var(--presentSize) * 0.05);
     }
 }
