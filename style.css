@@ -30,6 +30,13 @@ body {
     z-index: 1;
     overflow-x: hidden;
     overflow-y: scroll;
+    cursor: url(images/cursor.png), auto;
+}
+
+a,
+button,
+.clicavel {
+    cursor: url(images/pointer.png), auto;
 }
 
 .heart {
@@ -83,7 +90,7 @@ logo::before {
 
 logo:hover::after,
 logo:hover::before {
-    cursor: pointer;
+    cursor: url(images/pointer.png), auto;
 }
 
 header {
@@ -210,7 +217,7 @@ footer {
     padding-bottom: max(5px, 1vw);
     text-align: right;
     color: black;
-    font-size: calc(var(--fontSize) * 0.3);
+    font-size: max(calc(var(--fontSize) * 0.3), 15px);
     background: var(--headerbg);
     min-height: 250px;
 }
