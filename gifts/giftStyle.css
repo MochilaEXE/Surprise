@@ -35,6 +35,11 @@ body {
     cursor: url('../images/cursor.png'), auto;
 }
 
+a,
+button {
+    cursor: url(images/pointer.png), auto;
+}
+
 logo {
     margin: 0 10px;
     display: flex;
@@ -137,11 +142,12 @@ header p {
 .wrapper .text {
     background-image: linear-gradient(to top, #feffbabb, #00000000 15px);
     border-radius: clamp(10px, 5vw, 40px);
-    padding: 20px 100px;
+    padding: 20px 5vw;
     overflow: hidden;
 }
 
 .text p {
+    min-width: 100%;
     transform: translateY(200%);
     font-size: clamp(16px, 2vw, 30px);
     color: #ffffff;
@@ -189,27 +195,17 @@ header p {
 /* 4K */
 @media (min-width: 1901px) {
     :root {
-        --presentSize: clamp(400px, 45vh, 500px);
-        --presentSize: clamp(400px, 45dvh, 500px);
         --fontSize: 5.2rem;
         --logoWidth: 225px;
         --shadowSize: 80px;
     }
 }
 
-/* Laptops and PCs */
-@media (max-width: 1900px) and (min-width: 1101px) {
-    :root {
-        --presentSize: clamp(200px, 45vh, 400px);
-        --presentSize: clamp(200px, 45dvh, 400px);
-    }
-}
 
 /* Tablet */
 @media (max-width: 1100px) and (min-width: 901px) {
     :root {
         --fontSize: 3.5rem;
-        --presentSize: min(300px, 25vw);
         --logoWidth: 150px;
     }
 }
@@ -219,7 +215,6 @@ header p {
     :root {
         --logoWidth: 100px;
         --fontSize: 7vw;
-        --presentSize: max(200px, 35vw);
         --gap: 0;
     }
 }
@@ -229,7 +224,6 @@ header p {
     :root {
         --logoWidth: 75px;
         --fontSize: 2.2rem;
-        --presentSize: max(200px, 70vw);
     }
 }
 
@@ -238,7 +232,6 @@ header p {
     :root {
         --logoWidth: 60px;
         --fontSize: 7vw;
-        --presentSize: max(200px, 60vw);
     }
 }
 
