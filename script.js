@@ -26,7 +26,7 @@ function createHeart() {
   heart.classList.add("heart");
   heart.innerHTML = '<img src="images/heart.png">';
 
-  const size = Math.random() * 10 + 2; // random size
+  const size = Math.random() * 10 + 4; // random size
   const left = Math.random() * 90; // random position
   const duration = 3 + Math.random() * 7; // random speed
 
