@@ -212,14 +212,15 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    margin-top: auto;
+    margin-top: 10px;
     padding-right: 20px;
+    padding-left: 20px;
     padding-bottom: max(5px, 1vw);
     text-align: right;
     color: black;
     font-size: max(calc(var(--fontSize) * 0.3), 15px);
     background: var(--headerbg);
-    min-height: 250px;
+    min-height: 300px;
 }
 
 /* Animations */

@@ -31,8 +31,8 @@ function createHeart() {
   const duration = 3 + Math.random() * 7; // random speed
 
   heart.style.left = `${left}vw`;
-  heart.style.maxWidth = `${size}vw`;
-  heart.style.maxHeight = `${size}vw`;
+  heart.style.maxWidth = `min(${size}vw, 200px)`;
+  heart.style.maxHeight = `min(${size}vw, 200px)`;
   heart.style.animationDuration = `${duration}s`;
 
   document.body.appendChild(heart);
