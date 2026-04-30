@@ -107,24 +107,26 @@ header p {
 }
 
 .imageCollection {
-    min-width: 40vw;
+    width: 40vw;
     display: flex;
     position: relative;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: clamp(10px, 2vw, 30px);
     overflow-x: scroll;
     overflow-y: hidden;
     animation: appear 1.5s ease-out;
     scrollbar-width: thin;
+    flex-wrap: nowrap;
 }
 
 .imageCollection img {
     margin: auto;
-    max-width: 100%;
+    max-width: none;
     width: auto;
     height: max(25vw, 200px);
+    flex-shrink: 0;
 }
 
 .wrapper {
@@ -144,11 +146,12 @@ header p {
     border-radius: clamp(10px, 5vw, 40px);
     padding: 20px 5vw;
     overflow: hidden;
+    flex: 1;
 }
 
 .text p {
     min-width: 100%;
-    transform: translateY(200%);
+    transform: translateY(500%);
     font-size: clamp(16px, 2vw, 30px);
     color: #ffffff;
     text-shadow: 3px 3px 5px rgba(100, 100, 0, 0.9);
@@ -182,7 +185,7 @@ header p {
 
 @keyframes ascend {
     0% {
-        transform: translateY(200%);
+        transform: translateY(500%);
     }
 
     100% {
