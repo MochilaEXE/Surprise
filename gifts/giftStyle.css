@@ -50,6 +50,10 @@ logo {
     cursor: url('../images/pointer.png'), auto;
 }
 
+::-webkit-scrollbar {
+    cursor: url('../images/cursor.png'), auto;
+}
+
 logo::after,
 logo::before {
     content: "";
@@ -192,6 +196,7 @@ header p {
         transform: translateY(0);
     }
 }
+
 
 /* Responsive design */
 
