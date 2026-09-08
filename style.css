@@ -221,6 +221,7 @@ footer {
     font-size: max(calc(var(--fontSize) * 0.3), 15px);
     background: var(--headerbg);
     min-height: 300px;
+    z-index: 99;
 }
 
 /* Animations */
